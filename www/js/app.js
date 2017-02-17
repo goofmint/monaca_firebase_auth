@@ -16,8 +16,8 @@ ons.ready(function() {
 	  data: {
 	  	user: {
 	  		isLoggedIn: false,
-	  		mailAddress: "test@moongift.jp",
-	  		password: "testtest"
+	  		mailAddress: "",
+	  		password: ""
 	  	}
 	  },
 	  // デプロイ完了時のイベント
