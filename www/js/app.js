@@ -1,4 +1,4 @@
-ons.ready(function() {
+var onDeviceReady = function() {
   // Firebaseの初期化
   var config = {
     apiKey: "API_KEY",
@@ -29,29 +29,27 @@ ons.ready(function() {
 	  },
 	  // テンプレート
 	  template: `
-    <v-ons-page>
-	    <v-ons-toolbar>
-	      <div class="center"> Firebase認証 </div>
-	    </v-ons-toolbar>
+    <div>
+      <div class="center"> Firebase認証 </div>
 	    <section style="margin: 10px;" v-if="user.isLoggedIn">
 	    	<p>{{ user.mailAddress }}</p>
 		    <section style="margin: 10px;">
-		      <ons-button @click="logout">ログアウト</ons-button>
+		      <button @click="logout">ログアウト</button>
 		    </section>
 	    </section>
 			<section v-else style="margin: 10px;">
 	      <p>メールアドレス</p>
 	      <p>
-	        <v-ons-input v-ons-model="user.mailAddress" placeholder="メールアドレス"></v-ons-input>
+	        <input v-model="user.mailAddress" placeholder="メールアドレス" />
 	      </p>
 	      <p>パスワード</p>
 	      <p>
-	        <v-ons-input v-ons-model="user.password" placeholder="パスワード" type="password"></v-ons-input>
+	        <input v-model="user.password" placeholder="パスワード" type="password" />
 	      </p>
-	      <ons-button @click="register">新規登録</ons-button>
-	      <ons-button @click="login">ログイン</ons-button>
+	      <button @click="register">新規登録</button>
+	      <button @click="login">ログイン</button>
 	    </section>
-	  </v-ons-page>`,
+	  </div>`,
 	  // イベント処理
     methods: {
 	  	// 登録処理
@@ -74,4 +72,6 @@ ons.ready(function() {
 	  	}
 	  }
 	});
-});
+};
+
+document.addEventListener(window.cordova ?"deviceready" : "DOMContentLoaded", onDeviceReady, false);
